@@ -57,7 +57,7 @@
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-speech</artifactId>
-            <version>1.22.5</version>
+            <version>1.27.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -282,7 +282,7 @@
         <dependency>
             <groupId>org.neo4j</groupId>
             <artifactId>neo4j</artifactId>
-            <version>4.4.4</version>
+            <version>2025.04.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
