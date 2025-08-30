@@ -32,7 +32,7 @@
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parsers-standard-package</artifactId>
             <!-- workaround while tika 2.4.2 is not released-->
-            <version>2.4.0-p1</version>
+            <version>3.2.2</version>
             <exclusions>
         		<exclusion>
           			<groupId>com.pff</groupId>
