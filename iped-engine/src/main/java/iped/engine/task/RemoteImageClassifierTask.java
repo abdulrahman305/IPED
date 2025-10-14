@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -109,7 +110,7 @@ public class RemoteImageClassifierTask extends AbstractTask {
 
     // Queue to store 'name' to 'evidence' mapping
     private Map<String, IItem> queue = new TreeMap<>();
-    private ArrayList<IItem> sendToNext = new ArrayList<>();
+    private LinkedList<IItem> sendToNext = new LinkedList<>();
 
     // Zip archive holding files to be sent for classification
     private ZipFile zip;
@@ -350,13 +351,12 @@ public class RemoteImageClassifierTask extends AbstractTask {
             super.sendToNextTask(item);
             return;
         }
-        if (!sendToNext.isEmpty()) {
-            for (IItem it : sendToNext) {
-                super.sendToNextTask(it);
-            }
-            sendToNext.clear();
-        }
 
+        LinkedList<IItem> localList = new LinkedList<IItem>(sendToNext);
+        sendToNext.clear();
+        for (IItem it : localList) {
+            super.sendToNextTask(it);
+        }
         if (!queue.containsValue(item) || item.isQueueEnd()) {
             super.sendToNextTask(item);
         }
